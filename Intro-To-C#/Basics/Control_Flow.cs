@@ -38,7 +38,7 @@ namespace Intro_To_CSharp.Basics
             }
             else
             {
-                Console.WriteLine($"{number} is not positive.");
+                Console.WriteLine($"{number} is negative.");
             }
         }
 
