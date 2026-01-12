@@ -1,5 +1,6 @@
 ﻿using System;
 using Intro_To_CSharp.Basics;
+using Intro_To_CSharp.Basics.OOP;
 
 namespace Intro_To_CSharp
 {
@@ -34,8 +35,12 @@ namespace Intro_To_CSharp
                     case "4":
                         Console.Clear();
                         Console.WriteLine("======[Basics - Loops]=====\n");
-
                         Loops.Demonstrate();
+                        break;
+                    case "5":
+                        Console.Clear();
+                        Console.WriteLine("======[Basics - Encapsulation]=====\n");
+                        Encapsulation.DemonstrateEncapsulation();
                         break;
 
                     case "0":
@@ -67,6 +72,11 @@ namespace Intro_To_CSharp
             Console.WriteLine("║  2. Control Flow (if/else/switch)      ║");
             Console.WriteLine("║  3. Error Handling(try...catch)        ║");
             Console.WriteLine("║  4. Loops (for/while/foreach)          ║");
+            Console.WriteLine("╚════════════════════════════════════════╝");
+            Console.WriteLine("╔════════════════════════════════════════╗");
+            Console.WriteLine("║               C# OOP                   ║");
+            Console.WriteLine("╠════════════════════════════════════════╣");
+            Console.WriteLine("║  5. Encapsulation                      ║");
             Console.WriteLine("║                                        ║");
             Console.WriteLine("║  0. Exit                               ║");
             Console.WriteLine("╚════════════════════════════════════════╝");
