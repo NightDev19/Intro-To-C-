@@ -26,7 +26,6 @@ namespace Intro_To_CSharp
                         Console.Clear();
                         Console.WriteLine("======[Basics - Control Flow]=====\n");
                         Control_Flow.Demonstrate();
-                        Console.WriteLine("Coming soon...");
                         break;
 
                     case "3":

@@ -101,7 +101,9 @@ namespace Intro_To_CSharp.Basics
             do
             {
                 DisplayMenu();
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 choice = Console.ReadLine();
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
                 switch (choice)
                 {
