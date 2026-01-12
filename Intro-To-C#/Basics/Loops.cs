@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Intro_To_CSharp.Basics
 {
@@ -6,18 +8,32 @@ namespace Intro_To_CSharp.Basics
     {
         private const string Separator = "========================================";
 
+
+        private static readonly Dictionary<string, LoopDemonstration> MenuOptions = new()
+        {
+            { "1", new LoopDemonstration("For Loop", ForLoop) },
+            { "2", new LoopDemonstration("While Loop", WhileLoop) },
+            { "3", new LoopDemonstration("Do-While Loop", DoWhileLoop) },
+            { "4", new LoopDemonstration("Nested Loop (Heart Pattern)", NestedLoop) },
+            { "5", new LoopDemonstration("Break", Break) },
+            { "6", new LoopDemonstration("Continue", Continue) },
+            { "7", new LoopDemonstration("Foreach Loop", ForeachLoop) },
+            { "8", new LoopDemonstration("Goto", Goto) }
+        };
+
+        private record LoopDemonstration(string Title, Action DemoAction);
+
         public static void DisplayMenu()
         {
             Console.WriteLine("╔════════════════════════════════════════╗");
             Console.WriteLine("║         Loops Demonstration            ║");
             Console.WriteLine("╠════════════════════════════════════════╣");
-            Console.WriteLine("║  1. For Loop                           ║");
-            Console.WriteLine("║  2. While Loop                         ║");
-            Console.WriteLine("║  3. Do-While Loop                      ║");
-            Console.WriteLine("║  4. Nested Loop (Heart Pattern)        ║");
-            Console.WriteLine("║  5. Break                              ║");
-            Console.WriteLine("║  6. Continue                           ║");
-            Console.WriteLine("║  7. Foreach Loop                       ║");
+
+            foreach (var (key, demo) in MenuOptions)
+            {
+                Console.WriteLine($"║  {key}. {demo.Title,-34} ║");
+            }
+
             Console.WriteLine("║                                        ║");
             Console.WriteLine("║  0. Back to Main Menu                  ║");
             Console.WriteLine("╚════════════════════════════════════════╝");
@@ -70,43 +86,57 @@ namespace Intro_To_CSharp.Basics
             Console.WriteLine("Nested Loop - Heart Pattern:\n");
             Console.ForegroundColor = ConsoleColor.Red;
 
-            int size = 15;
+            const int size = 15;
 
-            for (int a = size / 2; a <= size; a += 2)
-            {
-                for (int b = 1; b < size - a; b += 2)
-                    Console.Write(" ");
+            // Top half of heart
+            DrawHeartTop(size);
 
-                for (int b = 1; b <= a; b++)
-                    Console.Write("*");
-
-                for (int b = 1; b <= size - a; b++)
-                    Console.Write(" ");
-
-                for (int b = 1; b <= a - 1; b++)
-                    Console.Write("*");
-
-                Console.WriteLine();
-            }
-
-            for (int a = size; a >= 0; a--)
-            {
-                for (int b = a; b < size; b++)
-                    Console.Write(" ");
-
-                for (int b = 1; b <= (a * 2) - 1; b++)
-                    Console.Write("*");
-
-                Console.WriteLine();
-            }
+            // Bottom half of heart
+            DrawHeartBottom(size);
 
             Console.ResetColor();
+        }
+
+        private static void DrawHeartTop(int size)
+        {
+            for (int a = size / 2; a <= size; a += 2)
+            {
+                WriteSpaces((size - a) / 2);
+                WriteCharacters('*', a);
+                WriteSpaces(size - a);
+                WriteCharacters('*', a - 1);
+                Console.WriteLine();
+            }
+        }
+
+        private static void DrawHeartBottom(int size)
+        {
+            for (int a = size; a >= 0; a--)
+            {
+                WriteSpaces(size - a);
+                WriteCharacters('*', Math.Max(0, (a * 2) - 1));
+                Console.WriteLine();
+            }
+        }
+
+        private static void WriteSpaces(int count)
+        {
+            WriteCharacters(' ', count);
+        }
+
+        private static void WriteCharacters(char character, int count)
+        {
+            if (count > 0)
+            {
+                Console.Write(new string(character, count));
+            }
         }
 
         public static void Break()
         {
             Console.WriteLine("Break Statement - Exiting a loop early:\n");
             Console.WriteLine("Counting from 1 to 10, but will stop at 5:\n");
+
             for (int i = 1; i <= 10; i++)
             {
                 if (i == 5)
@@ -116,14 +146,15 @@ namespace Intro_To_CSharp.Basics
                 }
                 Console.WriteLine($"Current number: {i}");
             }
-            Console.WriteLine("\nLoop exited early using break statement.");
 
+            Console.WriteLine("\nLoop exited early using break statement.");
         }
 
         public static void Continue()
         {
             Console.WriteLine("Continue Statement - Skipping an iteration:\n");
             Console.WriteLine("Counting from 1 to 10, but will skip 5:\n");
+
             for (int i = 1; i <= 10; i++)
             {
                 if (i == 5)
@@ -133,6 +164,7 @@ namespace Intro_To_CSharp.Basics
                 }
                 Console.WriteLine($"Current number: {i}");
             }
+
             Console.WriteLine("\nCompleted loop with continue statement.");
         }
 
@@ -161,6 +193,20 @@ namespace Intro_To_CSharp.Basics
             Console.WriteLine($"\nTotal sum: {sum}");
         }
 
+        public static void Goto()
+        {
+            bool errorOccured = true;
+            Console.WriteLine("Starting Process...");
+
+            if (errorOccured)
+                goto cleanUp;
+
+            Console.WriteLine("This Line will be skipped if an error occurs.");
+
+        cleanUp:
+            Console.WriteLine("Performing cleanup operations...");
+        }
+
         public static void Demonstrate()
         {
             string choice;
@@ -169,49 +215,32 @@ namespace Intro_To_CSharp.Basics
             {
                 DisplayMenu();
                 choice = Console.ReadLine()?.Trim() ?? string.Empty;
-
                 Console.Clear();
 
-                switch (choice)
+                if (choice == "0")
                 {
-                    case "1":
-                        ShowHeader("For Loop");
-                        ForLoop();
-                        break;
+                    Console.WriteLine("Returning to main menu...");
+                    break;
+                }
 
-                    case "2":
-                        ShowHeader("While Loop");
-                        WhileLoop();
-                        break;
-
-                    case "3":
-                        ShowHeader("Do-While Loop");
-                        DoWhileLoop();
-                        break;
-
-                    case "4":
-                        ShowHeader("Nested Loop");
-                        NestedLoop();
-                        break;
-                    case "5":
-
-                    case "6":
-                        ShowHeader("Foreach Loop");
-                        ForeachLoop();
-                        break;
-
-                    case "0":
-                        Console.WriteLine("Returning to main menu...");
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid choice. Please try again.");
-                        break;
+                if (MenuOptions.TryGetValue(choice, out var demo))
+                {
+                    ExecuteDemonstration(demo);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid choice. Please try again.");
                 }
 
                 PauseAndClear(choice);
 
-            } while (choice != "0");
+            } while (true);
+        }
+
+        private static void ExecuteDemonstration(LoopDemonstration demo)
+        {
+            ShowHeader(demo.Title);
+            demo.DemoAction();
         }
 
         private static void ShowHeader(string title)
