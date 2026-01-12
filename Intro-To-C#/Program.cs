@@ -34,8 +34,8 @@ namespace Intro_To_CSharp
                     case "4":
                         Console.Clear();
                         Console.WriteLine("======[Basics - Loops]=====\n");
-                       
-                        Console.WriteLine("Coming soon...");
+
+                        Loops.Demonstrate();
                         break;
 
                     case "0":
