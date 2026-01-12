@@ -9,7 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Variable_And_DataTypes\" />
+    <Compile Remove="Variable_And_DataTypes\**" />
+    <EmbeddedResource Remove="Variable_And_DataTypes\**" />
+    <None Remove="Variable_And_DataTypes\**" />
   </ItemGroup>
 
 </Project>
