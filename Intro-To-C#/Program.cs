@@ -14,8 +14,9 @@ namespace Intro_To_CSharp
             ["3"] = ("Error Handling", Error_Handling.Demonstrate),
             ["4"] = ("Loops", Loops.Demonstrate),
             ["5"] = ("Array", Arrays.DemonstrateArray),
-            ["6"] = ("Encapsulation", Encapsulation.DemonstrateEncapsulation),
-            ["7"] = ("Methods", Methods.RunCalculator)
+            ["6"] = ("Nullable" , Nullables.Demonstration),
+            ["7"] = ("Encapsulation", Encapsulation.DemonstrateEncapsulation),
+            ["8"] = ("Methods", Methods.RunCalculator)
         };
 
         private static void Main(string[] args)
@@ -65,12 +66,13 @@ namespace Intro_To_CSharp
                 "║  3. Error Handling(try...catch)        ║\n" +
                 "║  4. Loops (for/while/foreach)          ║\n" +
                 "║  5. Arrays                             ║\n" +
+                "║  6. Nullable                           ║\n" +
                 "╚════════════════════════════════════════╝\n" +
                 "╔════════════════════════════════════════╗\n" +
                 "║               C# OOP                   ║\n" +
                 "╠════════════════════════════════════════╣\n" +
-                "║  6. Encapsulation                      ║\n" +
-                "║  7. Methods                            ║\n" +
+                "║  7. Encapsulation                      ║\n" +
+                "║  8. Methods                            ║\n" +
                 "║                                        ║\n" +
                 "║  0. Exit                               ║\n" +
                 "╚════════════════════════════════════════╝"

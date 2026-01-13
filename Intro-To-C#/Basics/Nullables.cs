@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Intro_To_CSharp.Basics.OOP
+namespace Intro_To_CSharp.Basics
 {
-    internal class Nullable
+    internal class Nullables
     {
         public void ShowNullableExamples()
         {
@@ -27,7 +27,7 @@ namespace Intro_To_CSharp.Basics.OOP
 
         public static void Demonstration()
         {
-            Nullable demo = new Nullable();
+            Nullables demo = new Nullables();
             demo.ShowNullableExamples();
         }
     }
