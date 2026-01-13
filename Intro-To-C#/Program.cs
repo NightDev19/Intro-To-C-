@@ -15,8 +15,9 @@ namespace Intro_To_CSharp
             ["4"] = ("Loops", Loops.Demonstrate),
             ["5"] = ("Array", Arrays.DemonstrateArray),
             ["6"] = ("Nullable" , Nullables.Demonstration),
-            ["7"] = ("Encapsulation", Encapsulation.DemonstrateEncapsulation),
-            ["8"] = ("Methods", Methods.RunCalculator)
+            ["7"] = ("String", Strings.Demonstrate),
+            ["8"] = ("Encapsulation", Encapsulation.DemonstrateEncapsulation),
+            ["9"] = ("Methods", Methods.RunCalculator)
         };
 
         private static void Main(string[] args)
@@ -67,12 +68,13 @@ namespace Intro_To_CSharp
                 "║  4. Loops (for/while/foreach)          ║\n" +
                 "║  5. Arrays                             ║\n" +
                 "║  6. Nullable                           ║\n" +
+                "║  7. String                             ║\n" +
                 "╚════════════════════════════════════════╝\n" +
                 "╔════════════════════════════════════════╗\n" +
                 "║               C# OOP                   ║\n" +
                 "╠════════════════════════════════════════╣\n" +
-                "║  7. Encapsulation                      ║\n" +
-                "║  8. Methods                            ║\n" +
+                "║  8. Encapsulation                      ║\n" +
+                "║  9. Methods                            ║\n" +
                 "║                                        ║\n" +
                 "║  0. Exit                               ║\n" +
                 "╚════════════════════════════════════════╝"
