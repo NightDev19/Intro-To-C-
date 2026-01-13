@@ -3,26 +3,36 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace Intro_To_CSharp.Basics.OOP
+namespace Intro_To_CSharp.Basics
 {
     internal class Arrays
     {
         public static void DemonstrateArray()
         {
-            // Declare and initialize an array
-            int[] numbers = new int[5] { 10, 20, 30, 40, 50 };
-            // Access and print array elements
-            Console.WriteLine("Array Elements:");
-            for (int i = 0; i < numbers.Length; i++)
+            // Declaration of an Array
+            string[] arr = new string[] { "Pikachu", 
+                                           "Bulbasuar" , 
+                                           "Charmander" , 
+                                           "Eevee" , 
+                                           "Frokie" };
+
+            // Acessing Array Elements
+            Console.WriteLine("First Pokemon: " + arr[0] + "\n");
+            Console.WriteLine("List of Pokemons");
+            // Accessing all elements using Loop
+            for(int x = 1; x < arr.Length; x++)
             {
-                Console.WriteLine($"Element at index {i}: {numbers[i]}");
+                Console.WriteLine("Pokemon " + x + ": " + arr[x]);
             }
-            // Modify an array element
-            numbers[2] = 99;
-            Console.WriteLine("\nAfter modifying the element at index 2:");
-            Console.WriteLine($"Element at index 2: {numbers[2]}");
-            // Print the length of the array
-            Console.WriteLine($"\nLength of the array: {numbers.Length}");
+
+            // Modifying Array Elements
+            Console.WriteLine("\nModifying the last Pokemon to 'Squirtle'\n");
+            arr[4] = "Squirtle";
+            Console.WriteLine("Updated List of Pokemons");
+            for (int x = 0; x < arr.Length; x++)
+            {
+                Console.WriteLine("Pokemon " + (x + 1) + ": " + arr[x]);
+            }
         }
     }
 }
