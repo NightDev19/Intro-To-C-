@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 namespace Intro_To_CSharp.Basics.OOP
 {
-    public struct Book
+    // Defining Structure
+    struct Book
     {
         public string Title { get; set; }
         public string Author { get; set; }
@@ -26,7 +27,6 @@ namespace Intro_To_CSharp.Basics.OOP
                    $"Book ID: {BookId}";
         }
     }
-
     class Books
     {
         public static void Demonstrate()
@@ -70,12 +70,67 @@ namespace Intro_To_CSharp.Basics.OOP
             }
         }
     }
+    // Using Structure on Parameterized Constructor
+    struct Person
+    {
+        public string name;
+        public int age;
+        public string empid;
+
+        public Person(string name , int age, string empid)
+        {
+            this.name = name;
+            this.age = age;
+            this.empid = empid;
+        }
+    }
+    class People
+    {
+        public static void Demonstrate()
+        {
+            Person person1 = new Person("KJ", 24, "SEIII");
+            Console.WriteLine($"Name: {person1.name}, Age: {person1.age}, EmpID: {person1.empid}");
+            Person person2 = new Person("Alex", 30, "PM");
+            Console.WriteLine($"Name: {person2.name}, Age: {person2.age}, EmpID: {person2.empid}");
+        }
+    }
+    // Immutable Structure
+    struct Animal
+    {
+        public readonly string name;
+        public readonly string breed;
+        public readonly string color;
+
+        public Animal(string name, string breed, string color)
+        {
+            this.name = name;
+            this.breed = breed;
+            this.color = color;
+        }
+        public void DisplayInfo()
+        {
+            Console.WriteLine($"Name: {name}, Breed: {breed}, Color: {color}");
+        }
+    }
+    class Pets
+    {
+        public static void Demonstrate()
+        {
+            Animal pet1 = new Animal("Buddy", "Golden Retriever", "Golden");
+            Animal pet2 = new Animal("Mittens", "Siamese Cat", "Cream");
+            pet1.DisplayInfo();
+            pet2.DisplayInfo();
+        }
+    }
     internal class Structures
     {
        
         public static void Demonstrate()
         {
             Books.Demonstrate();
+            People.Demonstrate();
+            Pets.Demonstrate();
+
         }
     }
 }
