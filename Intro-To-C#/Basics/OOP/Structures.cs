@@ -1,44 +1,81 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Intro_To_CSharp.Basics.OOP
 {
-    struct Books
+    public struct Book
     {
-        public string title;
-        public string author;
-        public string subject;
-        public int book_id;
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public string Subject { get; set; }
+        public int BookId { get; set; }
+
+        public Book(string title, string author, string subject, int bookId)
+        {
+            Title = title;
+            Author = author;
+            Subject = subject;
+            BookId = bookId;
+        }
+
+        public override string ToString()
+        {
+            return $"Title: {Title}\n" +
+                   $"Author: {Author}\n" +
+                   $"Subject: {Subject}\n" +
+                   $"Book ID: {BookId}";
+        }
+    }
+
+    class Books
+    {
+        public static void Demonstrate()
+        {
+            // Dictionary with book ID as key and Book struct as value
+            var books = new Dictionary<int, Book>
+            {
+                {
+                    6495407,
+                    new Book(
+                        title: "C# Programming",
+                        author: "Tan Ah Teck",
+                        subject: "C# Programming Tutorial",
+                        bookId: 6495407
+                    )
+                },
+                {
+                    6495700,
+                    new Book(
+                        title: "Telecom Billing",
+                        author: "Zara Ali",
+                        subject: "Telecom Billing Tutorial",
+                        bookId: 6495700
+                    )
+                }
+            };
+
+            // Print all books
+            foreach (var kvp in books)
+            {
+                Console.WriteLine($"Book {kvp.Key}:");
+                Console.WriteLine(kvp.Value);
+                Console.WriteLine();
+            }
+
+            // Alternative: Access specific books by ID
+            if (books.TryGetValue(6495407, out Book book1))
+            {
+                Console.WriteLine("Accessing Book 1 directly:");
+                Console.WriteLine(book1);
+            }
+        }
     }
     internal class Structures
     {
-        
-
+       
         public static void Demonstrate()
         {
-            Books Book1, Book2;
-            // book 1 specification
-
-            Book1.title = "C# Programming";
-            Book1.author = "Tan Ah Teck";
-            Book1.subject = "C# Programming Tutorial";
-            Book1.book_id = 6495407;
-            // book 2 specification
-            Book2.title = "Telecom Billing";
-            Book2.author = "Zara Ali";
-            Book2.subject = "Telecom Billing Tutorial";
-            Book2.book_id = 6495700;
-            // print Book1 info
-            Console.WriteLine("Book 1 title : " +  Book1.title);
-            Console.WriteLine("Book 1 author : " +  Book1.author);
-            Console.WriteLine("Book 1 subject : " +  Book1.subject);
-            Console.WriteLine("Book 1 book_id : " +  Book1.book_id);
-            // print Book2 info
-            Console.WriteLine("Book 2 title : " +  Book2.title);
-            Console.WriteLine("Book 2 author : " +  Book2.author);
-            Console.WriteLine("Book 2 subject : " +  Book2.subject);
-            Console.WriteLine("Book 2 book_id : " +  Book2.book_id);
+            Books.Demonstrate();
         }
     }
 }
