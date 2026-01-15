@@ -122,9 +122,9 @@ namespace Intro_To_CSharp.Basics.OOP
             pet2.DisplayInfo();
         }
     }
+
     internal class Structures
     {
-       
         public static void Demonstrate()
         {
             Books.Demonstrate();
