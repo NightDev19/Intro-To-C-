@@ -56,9 +56,7 @@ namespace Intro_To_CSharp.Basics.OOP
         }
        
     }
-
     // Specifying Enum Values
-
     enum StatusCode
     {
         Success = 200,
@@ -76,7 +74,6 @@ namespace Intro_To_CSharp.Basics.OOP
             }
         }
     }
-
     // Comning Multiple Values Using Enum Flags
     [Flags]
     enum Permission
@@ -87,7 +84,6 @@ namespace Intro_To_CSharp.Basics.OOP
         Execute = 4,
         FullControl = Read | Write | Execute
     }
-
     static class Roles
     {
         public static readonly Permission Admin = Permission.FullControl;
@@ -96,7 +92,6 @@ namespace Intro_To_CSharp.Basics.OOP
         public static readonly Permission Student = Permission.Read;
         public static readonly Permission Teacher = Permission.Write;
     }
-
     class PermissionManagement
     {
         // Map role names to their permissions
@@ -144,18 +139,41 @@ namespace Intro_To_CSharp.Basics.OOP
             PermissionManagement.Demonstrate(Permission.Read);
         }
     }
+    // String to Integers Enums 
+     enum OrderStatus
+    {
+        Pending = 0,
+        Processing = 1,
+        Shipped = 2,
+        Delivered = 3,
+    }
+    class Order
+    {
+        public static void GetOrderStatus()
+        {
+            // String to Enum
+            string input = "Processing";
+            OrderStatus statusFromString = (OrderStatus)Enum.Parse(typeof(OrderStatus), input);
+            Console.WriteLine($"Order status from string '{input}': {statusFromString}");
 
+            // Interger to Enum
+            int value = 3;
+            OrderStatus statusFormat = (OrderStatus)value;
+            Console.WriteLine($"Order status from integer '{value}': {statusFormat}");
+        }
+
+    }
     internal class Enums
     {
-
         public static void Demonstations()
         {
-
             EnumDays.Demonstrate();
             Console.WriteLine();
             IdentifyStatusCode.Demonstrate();
             Console.WriteLine();
             PermissionManagement.Run();
+            Console.WriteLine();
+            Order.GetOrderStatus();
         }
     }
 }
